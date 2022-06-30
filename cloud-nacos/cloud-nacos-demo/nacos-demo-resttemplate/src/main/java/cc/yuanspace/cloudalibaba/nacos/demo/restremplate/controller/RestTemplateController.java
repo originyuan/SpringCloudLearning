@@ -2,10 +2,16 @@ package cc.yuanspace.cloudalibaba.nacos.demo.restremplate.controller;
 
 import cc.yuanspace.cloudalibaba.nacos.demo.common.GoodsDTO;
 import cc.yuanspace.cloudalibaba.nacos.demo.common.HttpResponse;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -99,6 +105,26 @@ public class RestTemplateController {
 
         // DELETE 请求没有响应体   第一个参数：请求url
         restTemplate.delete(getUrl("/goods/" + id));
+        return HttpResponse.success();
+    }
+
+    /**
+     * restTemplate.exchange 处理响应里的泛型数据
+     */
+    @GetMapping("/test")
+    public HttpResponse<Void> test() {
+
+        RequestEntity<Void> requestEntity = RequestEntity.get(URI.create(getUrl("/goods"))).build();
+
+        // 使用 ParameterizedTypeReference 定义泛型参数实际类型
+        // ParameterizedTypeReference是抽象类，这里是创建了子类
+        ParameterizedTypeReference<List<GoodsDTO>> paramType = new ParameterizedTypeReference<List<GoodsDTO>>(){};
+
+        ResponseEntity<List<GoodsDTO>> responseEntity = restTemplate.exchange(requestEntity, paramType);
+
+        System.out.println(responseEntity);
+        System.out.println(responseEntity.getBody());
+
         return HttpResponse.success();
     }
 
