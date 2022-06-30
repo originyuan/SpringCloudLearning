@@ -1,7 +1,6 @@
 package cc.yuanspace.cloudalibaba.nacos.demo.provider.controller;
 
 import cc.yuanspace.cloudalibaba.nacos.demo.common.GoodsDTO;
-import cc.yuanspace.cloudalibaba.nacos.demo.common.HttpResponse;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -17,42 +16,39 @@ public class RestTemplateApiController {
 
     // get
     @GetMapping("/goods/{id}")
-    public HttpResponse<GoodsDTO> getById(@PathVariable("id") Long id) {
-        return HttpResponse.success(db.stream().filter(e -> e.getId().equals(id)).findFirst().orElse(null));
+    public GoodsDTO getById(@PathVariable("id") Long id) {
+        return db.stream().filter(e -> e.getId().equals(id)).findFirst().orElse(null);
     }
 
     @GetMapping("/goods")
-    public HttpResponse<List<GoodsDTO>> list() {
-        return HttpResponse.success(db);
+    public List<GoodsDTO> list() {
+        return db;
     }
 
     // post
     @PostMapping("/goods")
-    public HttpResponse<GoodsDTO> save(@RequestBody GoodsDTO goodsDTO) {
+    public GoodsDTO save(@RequestBody GoodsDTO goodsDTO) {
         db.add(goodsDTO);
-        return HttpResponse.success(goodsDTO);
+        return goodsDTO;
     }
 
     // put
     @PutMapping("/goods")
-    public HttpResponse<GoodsDTO> update(@RequestBody GoodsDTO goodsDTO) {
-        if (goodsDTO == null || goodsDTO.getId() == null) {
-            return HttpResponse.error("参数错误");
-        }
+    public GoodsDTO update(@RequestBody GoodsDTO goodsDTO) {
+
         Optional<GoodsDTO> optional = db.stream().filter(e -> e.getId().equals(goodsDTO.getId())).findFirst();
         if (optional.isPresent()) {
             GoodsDTO dto = optional.get();
             dto.setGoodsName(goodsDTO.getGoodsName());
-            return HttpResponse.success(dto);
+            return dto;
         }
-        return HttpResponse.error("不存在");
+        return null;
     }
 
     // delete
     @DeleteMapping("/goods/{id}")
-    public HttpResponse<Boolean> delete(@PathVariable("id") Long id) {
-        boolean b = db.removeIf(e -> e.getId().equals(id));
-        return HttpResponse.success(b);
+    public Boolean delete(@PathVariable("id") Long id) {
+        return db.removeIf(e -> e.getId().equals(id));
     }
 
 }

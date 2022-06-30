@@ -1,5 +1,7 @@
 package cc.yuanspace.cloudalibaba.nacos.demo.common;
 
+import java.util.Objects;
+
 /**
  * 统一数据响应
  */
@@ -19,12 +21,16 @@ public class HttpResponse<T> {
         this.data = data;
     }
 
+    public static <T> HttpResponse<T> success() {
+        return success(null);
+    }
     public static <T> HttpResponse<T> success(T data) {
         return create(200L, "success", data);
     }
     public static <T> HttpResponse<T> error() {
-        return create(500L, "error", null);
+        return error("error");
     }
+
     public static <T> HttpResponse<T> error(String errmsg) {
         return create(500L, errmsg, null);
     }
@@ -55,5 +61,29 @@ public class HttpResponse<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "HttpResponse{" +
+                "errcode=" + errcode +
+                ", errmsg='" + errmsg + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HttpResponse<?> that = (HttpResponse<?>) o;
+        return Objects.equals(errcode, that.errcode) &&
+                Objects.equals(errmsg, that.errmsg) &&
+                Objects.equals(data, that.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(errcode, errmsg, data);
     }
 }
