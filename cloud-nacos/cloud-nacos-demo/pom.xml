@@ -17,6 +17,7 @@
         <module>nacos-demo-common</module>
         <module>nacos-demo-consumer</module>
         <module>nacos-demo-resttemplate</module>
+        <module>nacos-demo-config</module>
     </modules>
 
 </project>
