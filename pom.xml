@@ -12,6 +12,7 @@
         <module>cloud-nacos</module>
         <module>cloud-ribbon</module>
         <module>cloud-common</module>
+        <module>cloud-openfeign</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
