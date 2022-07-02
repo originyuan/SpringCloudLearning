@@ -13,6 +13,7 @@
         <module>cloud-ribbon</module>
         <module>cloud-common</module>
         <module>cloud-openfeign</module>
+        <module>cloud-sentinel</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
