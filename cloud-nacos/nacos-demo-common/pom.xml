@@ -9,15 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-nacos-demo</artifactId>
-    <packaging>pom</packaging>
+    <artifactId>nacos-demo-common</artifactId>
 
-    <modules>
-        <module>nacos-demo-provider</module>
-        <module>nacos-demo-common</module>
-        <module>nacos-demo-consumer</module>
-        <module>nacos-demo-resttemplate</module>
-        <module>nacos-demo-config</module>
-    </modules>
+    <description>公共模块，暴露 DTO 相关类</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
