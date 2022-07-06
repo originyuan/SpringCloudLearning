@@ -1,7 +1,9 @@
 package cc.yuanspace.cloudalibaba.sentinel.controller;
 
+import cc.yuanspace.cloudalibaba.sentinel.client.TestClient;
 import cc.yuanspace.cloudalibaba.sentinel.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +23,15 @@ public class TestController {
     public String get2() {
         testService.get();
         return "456";
+    }
+
+
+    @Autowired
+    private TestClient testClient;
+
+    @GetMapping("/clientGet")
+    public String clientGet() {
+        System.out.println("远程调用");
+        return testClient.get();
     }
 }

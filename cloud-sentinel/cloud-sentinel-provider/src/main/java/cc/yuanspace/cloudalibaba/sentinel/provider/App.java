@@ -1,4 +1,4 @@
-package cc.yuanspace.cloudalibaba.sentinel;
+package cc.yuanspace.cloudalibaba.sentinel.provider;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @EnableDiscoveryClient // 开启服务注册与发现功能
-@EnableFeignClients(basePackages = "cc.yuanspace.cloudalibaba.sentinel.client")  // 开启OpenFeign
+@EnableFeignClients  // 开启OpenFeign
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class, args);
