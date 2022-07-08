@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-gw-basic</artifactId>
+    <artifactId>cloud-gw-routes</artifactId>
     <description>基本应用</description>
 
     <dependencies>

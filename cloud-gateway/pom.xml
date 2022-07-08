@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>cloud-gw-basic</module>
+        <module>cloud-gw-routes</module>
         <module>cloud-gw-server</module>
     </modules>
 
