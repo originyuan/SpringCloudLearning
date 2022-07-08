@@ -16,6 +16,7 @@
         <module>cloud-gw-routes</module>
         <module>cloud-gw-server</module>
         <module>cloud-gw-predicates</module>
+        <module>cloud-gw-filters</module>
     </modules>
 
 </project>
