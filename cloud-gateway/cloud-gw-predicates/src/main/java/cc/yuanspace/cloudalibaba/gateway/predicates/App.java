@@ -1,4 +1,4 @@
-package cc.yuanspace.cloudalibaba.gateway.basic;
+package cc.yuanspace.cloudalibaba.gateway.predicates;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
